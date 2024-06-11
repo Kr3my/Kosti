@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #4077ca;
+    background-color:#aed6f1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    background-color: #fff;
+    background-color: #ebf5fb;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -40,7 +40,7 @@ h2 {
 button {
     width: 100%;
     padding: 10px;
-    background-color:  #0a95ea ;
+    background-color: #5499c7;
     border: none;
     border-radius: 3px;
     color: #fff;
