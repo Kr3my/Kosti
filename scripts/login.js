@@ -6,13 +6,25 @@ const validateUser = (user, password, callback) => {
         return response.json()
     })
     .then((data) => {
-        callback(true)
+        if(data["success"] == true) {
+            callback(true)
+            return
+        }
+
+        callback(false)
     })
     .catch((err) => {
         callback(false)
     })
 }
 
-console.log(validateUser("hola", "mundo", (state) => {
-    console.log(state)
-}))
+document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("submit")
+
+    btn.addEventListener("click", (ev) => {
+        ev.preventDefault()
+        validateUser(document.getElementById("username").value, document.getElementById("password").value, (state) => {
+            
+        })
+    })
+})
