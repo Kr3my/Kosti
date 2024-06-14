@@ -1,15 +1,15 @@
 <?php
 header('Content-Type: application/json');
 
-if (!isset($_POST['user']) || !isset($_POST['pwd'])) {
+if (!isset($_GET['user']) || !isset($_GET['pwd'])) {
     echo json_encode(array('success' => false, 'message' => 'Usuario y/o contraseña no proporcionados.'));
     exit;
 }
 
-$user = $_POST['user'];
-$pwd = $_POST['pwd'];
+$user = $_GET['user'];
+$pwd = $_GET['pwd'];
 
-$connection = mysqli_connect("localhost", "root", "", "main_data");
+$connection = mysqli_connect("localhost", "user", "password", "osu");
 
 if (!$connection) {
     echo json_encode(array('success' => false, 'message' => 'Error de conexión a la base de datos.'));
@@ -19,7 +19,7 @@ if (!$connection) {
 $user_escaped = mysqli_real_escape_string($connection, $user);
 $pwd_escaped = mysqli_real_escape_string($connection, $pwd);
 
-$query = "SELECT username, pwd FROM `table` WHERE username = '$user_escaped'";
+$query = "SELECT username, pwd FROM `usuarios` WHERE username = '$user_escaped'";
 $result = mysqli_query($connection, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
