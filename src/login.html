@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/Kosti/styles/style2.css">
 </head>
 <body>
     <div class="container">
         <h2>Inicio de Sesión</h2>
-        <form action="/login" method="POST">
+        <form action="/" method="POST">
             <div class="input-group">
                 <input type="text" id="username" name="username" placeholder="Usuario" required>
             </div>
             <div class="input-group">
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
             </div>
-            <button type="submit">Ingresar</button>
-            <p>¿No tienes una cuenta? <a href="register.html">Crear una cuenta</a></p>
+            <button type="submit" id="main-btn">Ingresar</button>
+            <p>¿No tienes una cuenta? <a href="../src/signup.html">Crear una cuenta</a></p>
         </form>
     </div>
 
