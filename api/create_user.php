@@ -27,5 +27,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     mysqli_close($connection);
 }
 
-header("Location: ../src/panel.html");
+header("Location: ../src/panel.php");
 ?>

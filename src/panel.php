@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 
+<?php
+session_start();
+
+if(!isset($_SESSION["user"])) {
+    header("Location: ../src/login.html");
+    exit;
+}
+?>
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -21,7 +30,7 @@
                     <ul class="gap-4 flex flex-row mr-4">
                         <li class="text-[#ffffff] font-thin text-xl 2xl:text-2xl transition-all duration-500 border-b-transparent hover:border-b-[1px] hover:border-[#e1c1ff]"><a href="src/login.html">Iniciar sesión</a></li>
 
-                        <li><a class="text-[#FFD8E8] font-thin text-xl 2xl:text-2xl transition-all duration-500 border-b-transparent hover:border-b-[1px] hover:border-[#e1c1ff]" href="src/logout.html">Cerrar sesión</a></li>
+                        <li><a class="text-[#FFD8E8] font-thin text-xl 2xl:text-2xl transition-all duration-500 border-b-transparent hover:border-b-[1px] hover:border-[#e1c1ff]" href="../api/destroy_session.php">Cerrar sesión</a></li>
                     </ul>
                 </div>
             </nav>

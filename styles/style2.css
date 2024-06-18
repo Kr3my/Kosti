@@ -1,5 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
     background-color: #aed6f1;
     display: flex;
     justify-content: center;
@@ -26,7 +27,7 @@ h2 {
 }
 
 .input-group input {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -60,4 +61,9 @@ p a {
 
 p a:hover {
     text-decoration: underline;
+}
+
+.error {
+    color: red;
+    display: none;
 }
