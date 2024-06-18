@@ -4,24 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
-    <link rel="stylesheet" href="/Kosti/styles/style2.css">
+    <link rel="stylesheet" href="Styles.css">
 </head>
 <body>
     <div class="container">
         <h2>Inicio de Sesión</h2>
-        <form action="/" method="POST">
+        <form action="/login" method="POST">
             <div class="input-group">
                 <input type="text" id="username" name="username" placeholder="Usuario" required>
             </div>
             <div class="input-group">
-                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña"required>
             </div>
             <span class="error" id="indicator" style="color: red; display: none;">Contraseña o usuario incorrectos.</span>
             <button type="submit" id="main-btn">Ingresar</button>
-            <p>¿No tienes una cuenta? <a href="../src/signup.html">Crear una cuenta</a></p>
+            <p>¿No tienes una cuenta? <a href="register.html">Crear una cuenta</a></p>
         </form>
     </div>
-
-    <script src="/Kosti/scripts/login.js"></script>
 </body>
 </html>
