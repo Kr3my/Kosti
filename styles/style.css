@@ -12,19 +12,15 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 15px;
-}
-
-::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: #d8d8d8;
-}
-   
-::-webkit-scrollbar-thumb {
-    background: #2d3748; 
-    border-radius: 10px;
-}
+    width: 11px;
+  }
   
-::-webkit-scrollbar-thumb:hover {
-    background: #292929; 
-}
+::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-color: #c9c9c9;
+    border-radius: 100px;
+  }
