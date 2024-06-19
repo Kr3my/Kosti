@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color:#f397ae;
+    background-color:#aed6f1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,10 +9,10 @@ body {
 }
 
 .container {    
-    background-color: #fcd7d7;
+    background-color: #ebf5fb;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px #ffc9c9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     text-align: center;
 }
@@ -31,10 +31,10 @@ h2 {
 }
 
 .input-group input {
-    width: 93.8%;
+    width: 94.1%;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 7px;
+    border-radius: 4px;
    
 }
 
@@ -67,7 +67,7 @@ p a:hover {
 }
 
 input::placeholder {
-    font-size: 15px;
+    font-size: 14px;
 }
 .error {
     color: red;
