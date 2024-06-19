@@ -7,6 +7,11 @@ if(!isset($_SESSION["user"])) {
     header("Location: ../src/login.html");
     exit;
 }
+
+if(!isset($_COOKIE["user_id"])) {
+    header("Location: ../src/login.html");
+    exit;
+}
 ?>
 
 <html>

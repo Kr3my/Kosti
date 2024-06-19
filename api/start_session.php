@@ -4,6 +4,6 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
 
     $_SESSION["user"] = $_GET["user"];
 
-    header("Location: ../src/panel.html");
+    header("Location: ../src/panel.php");
 }
 ?>
