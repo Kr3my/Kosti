@@ -20,7 +20,7 @@ const getCookie = (cookieName) => {
         }
     }
 
-    return null
+    return null;
 }
 
 const createListElement = (data) => {
