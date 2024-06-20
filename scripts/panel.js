@@ -20,7 +20,7 @@ const getCookie = (cookieName) => {
         }
     }
 
-    return null;
+    return null
 }
 
 const createListElement = (data) => {
@@ -38,23 +38,51 @@ const createListElement = (data) => {
     input.value = data.name;
     headerDiv.appendChild(input)
 
+    input.addEventListener("blur", () => {
+        fetch(`../api/update_list.php?id=${data.id}&content=${input.value}`)
+    })
+
     const ul = document.createElement('ul')
     ul.className = 'my-4 w-full list-none h-[100%] gap-4 flex flex-col items-center overflow-y-scroll'
     mainLi.appendChild(ul)
 
-    const firstLi = document.createElement('li')
-    firstLi.className = 'bg-transparent w-[86%] min-h-[130px] rounded-xl overflow-auto flex justify-start items-start flex-col'
-    ul.appendChild(firstLi)
+    const createCard = (d) => {
+        const firstLi = document.createElement('li')
+        firstLi.className = 'bg-transparent w-[86%] min-h-[130px] rounded-xl overflow-auto flex justify-start items-start flex-col'
+        ul.appendChild(firstLi)
+    
+        const textarea = document.createElement('textarea')
+        textarea.placeholder = "Escribe el contenido de la carta aquí..."
+        textarea.className = 'w-[100%] h-[100%] px-2 resize-y overflow-hidden outline-none font-thin rounded-xl text-[#242424]'
+        firstLi.appendChild(textarea)
+    
+        const removeButton1 = document.createElement('button')
+        removeButton1.className = 'top-2 right-2 text-[#ff5858] p-[6px] text-md transition-all duration-700'
+        removeButton1.textContent = 'Remover carta'
+        firstLi.appendChild(removeButton1)
 
-    const textarea = document.createElement('textarea')
-    textarea.placeholder = "Escribe el contenido de la carta aquí..."
-    textarea.className = 'w-[100%] h-[100%] px-2 resize-y overflow-hidden outline-none font-thin rounded-xl text-[#242424]'
-    firstLi.appendChild(textarea)
+        if(d.titulo.length > 1) {
+            textarea.value = d.titulo
+        }
 
-    const removeButton1 = document.createElement('button')
-    removeButton1.className = 'top-2 right-2 text-[#ff5858] p-[6px] text-md transition-all duration-700'
-    removeButton1.textContent = 'Remover carta'
-    firstLi.appendChild(removeButton1)
+        textarea.addEventListener("blur", () => {
+            fetch(`../api/update_card.php?id=${d.id}&list=${data.id}&content=${textarea.value}`)
+        })
+
+        removeButton1.addEventListener("click", () => {
+            fetch(`../api/remove_card.php?id=${d.id}&list=${data.id}`)
+            .then(async (response) => {
+                if(response.ok) {
+                    DOMItems.cardContainer.innerHTML = ""
+                    renderTables(await getData())
+                }
+            })
+        })
+    }
+
+    data.cards.forEach((current) => {
+        createCard(current)
+    })
 
     const secondLi = document.createElement('li')
     secondLi.className = 'bg-[#202125] hover:w-[20%] transition-all duration-700 w-[15%] min-h-[30px] rounded-xl flex justify-center items-center text-center'
@@ -64,6 +92,20 @@ const createListElement = (data) => {
     addButton.className = 'text-3xl w-full h-full text-white hover:text-[#a8a8a8] font-thin text-center flex justify-center items-center transition-all duration-700 hover:rotate-12'
     addButton.textContent = '+'
     secondLi.appendChild(addButton)
+
+    addButton.addEventListener("click", () => {
+        const boardId = getCookie("board_id")
+
+        fetch(`../api/add_card.php?tab=${boardId}&list=${data.id}`, {
+            method: "GET",
+        })
+        .then(async (response) => {
+            if(response.ok) {
+                DOMItems.cardContainer.innerHTML = ""
+                renderTables(await getData())
+            }
+        })
+    })
 
     const thirdLi = document.createElement('li')
     thirdLi.className = 'bg-[#ff5858] rounded-xl'
@@ -75,8 +117,16 @@ const createListElement = (data) => {
     thirdLi.appendChild(removeButton2)
     
     removeButton2.addEventListener("click", () => {
-        fetch("remove_list.php", {
+        const boardId = getCookie("board_id")
+
+        fetch(`../api/remove_list.php?tab=${boardId}&list=${data.id}`, {
             method: "GET",
+        })
+        .then(async (response) => {
+            if(response.ok) {
+                DOMItems.cardContainer.innerHTML = ""
+                renderTables(await getData())
+            }
         })
     })
 
@@ -85,12 +135,11 @@ const createListElement = (data) => {
 
 const renderTables = (data) => {
     data.forEach((current) => {
+        console.log(current)
         const newList = createListElement({
             name: current.nombre,
             id: current.id,
-            cards: [
-
-            ]
+            cards: current.tarjetas
         })
 
         DOMItems.cardContainer.appendChild(newList)
@@ -98,8 +147,8 @@ const renderTables = (data) => {
 }
 
 const getData = async () => {
-    const tablero_id = getCookie("board_id")
-    const response = await fetch(`../api/get_data.php?id_tablero=${tablero_id}`, {
+    const boardId = getCookie("board_id")
+    const response = await fetch(`../api/get_data.php?id_tablero=${boardId}`, {
         method: "GET"
     })
 
@@ -111,18 +160,16 @@ const getData = async () => {
 }
 
 const createList = () => {
-    fetch("../api/create_list.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        }
+    const boardId = getCookie("board_id")
+
+    fetch(`../api/create_list.php?tab=${boardId}`, {
+        method: "GET"
     })
-    .then((response) => {
-        return response.json()
-    })
+    .then(response => response.json())
     .then(async (data) => {
         console.log(data)
         DOMItems.cardContainer.innerHTML = ""
+
         renderTables(await getData())
     })
     .catch((exception) => {
@@ -139,8 +186,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
 
     DOMItems.shareLink.addEventListener("click", () => {
-        console.log(getCookie("board_id"), atob(getCookie("board_id")))
-        navigator.clipboard.writeText(atob(getCookie("board_id"))).then(() => {
+        navigator.clipboard.writeText(window.location.href + "?share=" + btoa(getCookie("board_id"))).then(() => {
             console.log("clipped")
         })
     })
