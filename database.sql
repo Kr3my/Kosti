@@ -40,6 +40,9 @@ SELECT * FROM listas;
 INSERT INTO tableros (id_usuario, nombre, descripcion) VALUES (9, 'Tablero del Usuario 1', 'Tablero para proyectos del usuario 1');
 
 DELETE FROM usuarios;
+DELETE FROM tableros;
+DELETE FROM listas;
+DELETE FROM tarjetas;
 
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON osu.* TO 'user'@'localhost';
