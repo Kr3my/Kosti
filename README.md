@@ -21,3 +21,33 @@ Nuestro proyecto tiene cómo finalidad proporcionar ayuda al acceder a la inform
 + **Sistema de compartido:** Con esta funcionalidad podrás brindar la información de tu tablero a otras personas con fines colaborativos.
 
 + **Interfaz sencilla:** La interfaz cuenta con elementos bastante simples para no complicar su comprensión.
+
+# 🐬 Instrucciones de uso
+**Para el consumidor:**
+
++ En caso de contar con una cuenta activa, favor de introducir el usuario y contraseña que designó al crearla.
+> ![image](https://github.com/NotFxeel/Kosti/assets/150699852/cff3a4e7-3fc6-4755-a542-8711e31c6b32)
+
+
+
++ En caso de no contar con una cuenta activa, introduzca un nombre de usuario y contraseña las cuales se asignarán a su nueva cuenta.
+> ![image](https://github.com/NotFxeel/Kosti/assets/150699852/79665cb2-9c6d-43f9-8b76-c48a7bf244b4)
+
+
+**Dueño del tablero:**
+
+
++ Una vez iniciada la sesión podrá ver su tablero, listo para su uso.
++ Los botones adentro de las cartas permitirán crear nuevas cartas para almacenar información.
++ El botón del tablero permitirá agregar nuevas tablas para crear nuevas categorías de información.
++ Podrá modificar el nombre de la carta presionando el texto del encabezado.
++ Si deasea compartir su tablero a otras personas, puede presionar el botón de compartir, lo cual generará un enlace que se copiará al portapapeles listo para compartir. **Las personas que entren por el enlace no podrán hacer modificaciones en el tablero, sin embargo, podrán ver el tablero.**
+> ![image](https://github.com/NotFxeel/Kosti/assets/150699852/f9cbcb39-93be-4bc2-a316-ab38861c0fcb)
+
+
+*Invitado:*
++ Cómo invitado, podrá ver y leer el tablero de la persona a la que esté observando
+> ![image](https://github.com/NotFxeel/Kosti/assets/150699852/61bc04ae-4fc3-4950-9af5-5e14b26a5913)
+
+
+
