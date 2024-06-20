@@ -4,23 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Cuenta</title>
-    <link rel="stylesheet" href="Styles.css">
+    <link rel="stylesheet" href="../styles/style2.css">
 </head>
 <body>
     <div class="container">
         <h2>Crear Cuenta</h2>
-        <form action="/register" method="POST">
+        <form action="/Kosti/api/create_user.php" method="POST">
             <div class="input-group">
-                <input type="text" id="username" name="username"placeholder="Usuario" required>
+                <input type="text" id="username" name="user"placeholder="Usuario" required>
             </div>
             <div class="input-group">
-                <input type="email" id="email" name="email" placeholder="Correo Electrónico"required>
-            </div>
-            <div class="input-group">
-                <input type="password" id="password" name="password" placeholder="Contraseña"required>
-            </div>
-            <div class="input-group">
-                <input type="password" id="confirm-password" name="confirm-password"placeholder="Confirmar Contraseña" required>
+                <input type="password" id="password" name="pwd" placeholder="Contraseña"required>
             </div>
             <button type="submit">Registrar</button>
             <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>

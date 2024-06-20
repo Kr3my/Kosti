@@ -1,5 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    session_start();
+
     $user = isset($_POST["user"]) ? $_POST["user"] : '';
     $pwd = isset($_POST["pwd"]) ? $_POST["pwd"] : '';
 
@@ -22,12 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $insert_board_query = "INSERT INTO `tableros` (id_usuario, nombre) VALUES ('$user_id', 'Tablero principal')";
 
         setcookie("user_id", $user_id, time() + (86400 * 30), "/");
+        $_SESSION["user"] = "$user_escaped";
 
         if (mysqli_query($connection, $insert_board_query)) {
             $board_id = mysqli_insert_id($connection);
             $insert_list_query = "INSERT INTO `listas` (id_tablero, nombre) VALUES ('$board_id', 'Lista principal')";
 
-            setcookie("board_id", $user_id, time() + (86400 * 30), "/");
+            setcookie("board_id", $board_id, time() + (86400 * 30), "/");
 
             if (mysqli_query($connection, $insert_list_query)) {
                 $list_id = mysqli_insert_id($connection);
@@ -49,7 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     mysqli_close($connection);
+    header("Location: ../src/panel.php");
 }
-
-header("Location: ../src/panel.php");
 ?>
